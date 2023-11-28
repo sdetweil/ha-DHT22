@@ -15,9 +15,11 @@
 #define mqtt_user "sensor1"
 #define mqtt_password "Plm21#qwp0999"
 
+#define RoomName "office"
 
-#define humidity_topic "home/bedroom/humidity"
-#define temperature_topic "home/bedroom/temperature"
+#define humidity_topic "home/%s/humidity"
+#define temperature_topic "home/%s/temperature"
+char deviceName[sizeof(temperature_topic)*2];
 
 #define DHTTYPE DHT22
 #define DHTPIN  12
@@ -114,14 +116,16 @@ void loop() {
       temp = newTemp;
       Serial.print("New temperature:");
       Serial.println(String(temp).c_str());
-      client.publish(temperature_topic, String(temp).c_str(), true);
+      sprintf(deviceName,temperature_topic,RoomName);
+      client.publish(deviceName, String(temp).c_str(), true);
     }
 
     if (checkBound(newHum, hum, diff)) {
       hum = newHum;
       Serial.print("New humidity:");
       Serial.println(String(hum).c_str());
-      client.publish(humidity_topic, String(hum).c_str(), true);
+      sprintf(deviceName,humidity_topic,RoomName);
+      client.publish(deviceName, String(hum).c_str(), true);
     }
   }
 }
