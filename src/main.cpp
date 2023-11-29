@@ -8,12 +8,12 @@
 #include <PubSubClient.h>
 #include <DHT.h>
 
-#define wifi_ssid "fubar"
-#define wifi_password "foobar0x1"
+#define wifi_ssid "wifi ssid"
+#define wifi_password "wifi password"
 
-#define mqtt_server "192.168.2.53"
-#define mqtt_user "sensor1"
-#define mqtt_password "Plm21#qwp0999"
+#define mqtt_server "mqtt server ip address or name"
+#define mqtt_user "mqtt_uerid"
+#define mqtt_password "mqtt_user_password"
 
 #define RoomName "office"
 
